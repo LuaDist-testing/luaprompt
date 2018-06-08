@@ -23,12 +23,12 @@
 -- SOFTWARE.
 
 package = "luaprompt"
-version = "0.6-1"
+version = "0.7-1"
 supported_platforms = {"!windows", "!win32"}
 
 -- LuaDist source
 source = {
-  tag = "0.6-1",
+  tag = "0.7-1",
   url = "git://github.com/LuaDist-testing/luaprompt.git"
 }
 -- Original source
@@ -60,7 +60,8 @@ luaprompt features:
   installed in the standard directories, and completed modules can
   optionally be loaded.
 
-* Persistent command history (retained across sessions).
+* Persistent command history (retained across sessions), as well as
+  recording of command results for future reference.
 
 * Proper value pretty-printing for interactive use: When an expression
   is entered at the prompt, all returned values are printed
@@ -112,11 +113,13 @@ build = {
             },
 
             defines = {
+                "_GNU_SOURCE",
                 "HAVE_LIBREADLINE",
                 "HAVE_READLINE_HISTORY",
                 "HAVE_IOCTL",
                 "COMPLETE_KEYWORDS",
                 "COMPLETE_TABLE_KEYS",
+                "COMPLETE_METATABLE_KEYS",
                 "COMPLETE_FILE_NAMES",
                 "COMPLETE_MODULES",
                 "SAVE_RESULTS",
